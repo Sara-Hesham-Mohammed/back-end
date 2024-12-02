@@ -10,8 +10,8 @@ const NewsSchema = new Schema({
         required: true 
     },
     publishedDateTime: { 
-        type: String, 
-        required: true 
+        type: Date, 
+        required: true,
     },
 });
 
