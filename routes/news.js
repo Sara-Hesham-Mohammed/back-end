@@ -1,22 +1,14 @@
-// import Express Router from express
+//imports
 const { Router } = require('express');
-
-// import our newsController
 const newsController = require('../controllers/news-controller');
-
-// create an instance of Express Router.
+//init
 const newsRouter = Router();
 
-// whenever we receive a GET request on products route '/',
-// we will invoke the getProducts method in the products controller.
 newsRouter.get('/', newsController.getAllNews);
 
-// whenever we receive a POST request on products route '/',
-// we will invoke the getProducts method in the products controller.
 newsRouter.post('/', newsController.postArticle);
 
-// whenever we receive a GET request on products DYNAMIC route '/:productId',
-// we will invoke the getProduct method in the products controller that extracts the productId
+//dynamic route /:id
 newsRouter.get('/:articleId', newsController.getArticle);
 
 newsRouter.delete('/:articleId', newsController.deleteArticle);

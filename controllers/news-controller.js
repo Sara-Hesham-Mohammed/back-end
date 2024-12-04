@@ -6,7 +6,6 @@ module.exports.getAllNews = async (req, res) => {
     const news = await newsService.findAllNews();
     return res.send({ news });
   } catch (err) {
-    // this denotes a server error, therefore status code should be 500.
     res.status(500);
     return res.send({
       error: err.message
@@ -14,9 +13,8 @@ module.exports.getAllNews = async (req, res) => {
   }
 };
 
-//gets a single news article (maybe change to get article?)
+//gets a single news article 
 module.exports.getArticle= async (req, res) => {
-  // notice how we extract the articleId from the dynamic route that should be /news/:articleId
   const articleId = req.params.articleId;
   try {
     const article = await newsService.findArticleById(articleId);
