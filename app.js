@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 //DB Connnection
 const initiateDBConnection = require("./config/db");
 
+//this fn loads all the env vars from the .env file
 dotenv.config({
     path: './config/.env'
 });
@@ -23,3 +24,5 @@ app.listen(PORT, async () => {
     //init server first THEN DB
     await initiateDBConnection();
 });
+
+app.use(express.json());

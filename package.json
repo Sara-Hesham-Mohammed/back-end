@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "git:push": "git add . && git commit -m \"Automated commit\" && git push origin main"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.9",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "install": "^0.13.0",
