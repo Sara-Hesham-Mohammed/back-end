@@ -15,6 +15,6 @@ const NewsSchema = new Schema({
     },
 });
 
-const ProductModel = model('product', ProductsSchema);
+const NewsModel = model('news', NewsSchema);
 
-module.exports = ProductsSchema;
+module.exports = NewsSchema;
