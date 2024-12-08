@@ -1,7 +1,7 @@
 const http = require('http');
 const { Server } = require('socket.io');
 const { fetchStockPrice } = require('./services/stocks');
-
+app.use('/api/stocks', stockRouter);
 const server = http.createServer(app);
 const io = new Server(server);
 
