@@ -6,6 +6,8 @@ const newsRouter = Router();
 
 newsRouter.get('/top-headlines', newsController.getAllNews);
 
+newsRouter.get('/:topic', newsController.getTopNewsByTopic);
+
 
 //dynamic route /:id
 newsRouter.get('/:articleId', newsController.getArticle);
