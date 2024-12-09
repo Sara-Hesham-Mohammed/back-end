@@ -4,7 +4,7 @@ const newsController = require('../controllers/news-controller');
 //init
 const newsRouter = Router();
 
-newsRouter.get('/', newsController.getAllNews);
+newsRouter.get('/top-headlines', newsController.getAllNews);
 
 
 //dynamic route /:id

@@ -17,7 +17,7 @@ module.exports.getTopHeadlines = async () => {
     });
     console.log(data.data[0].title);
     
-    return data;
+    return data.data;
   } catch (error) {
     console.error('Error fetching top headlines:', error.message);
     throw error;
