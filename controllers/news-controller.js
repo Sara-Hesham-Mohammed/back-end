@@ -3,7 +3,7 @@ const newsService = require('../services/news-service');
 //gets all news
 module.exports.getAllNews = async (req, res) => {
   try {
-    const news = await newsService.findAllNews();
+    const news = await newsService.getTopHeadlines();
     return res.send({ news });
   } catch (err) {
     res.status(500);
@@ -28,36 +28,6 @@ module.exports.getArticle= async (req, res) => {
     });
   } catch (err) {
     res.status(500).send({
-      error: err.message
-    });
-  }
-};
-
-module.exports.postArticle = async (req, res) => {
-  const articleInfo = {
-  };
-  try {
-    const createdArticle = await newsService.addNewArticle(articleInfo);
-    return res.status(201).send({
-      msg: 'article created successfully.',
-      articleId: createdArticle._id
-    });
-  } catch (err) {
-    return res.status(500).send({
-      error: err.message
-    });
-  }
-};
-
-module.exports.deleteArticle = async (req, res) => {
-  const articleId = req.params.articleId;
-  try {
-    await newsService.removeArticle(articleId);
-    return res.send({
-      msg: 'article deleted successfully.'
-    });
-  } catch (err) {
-    return res.status(500).send({
       error: err.message
     });
   }
