@@ -1,9 +1,6 @@
 import Axios from 'axios';
 import moment from 'moment';
 
-/*
-    OPTIONS object contains optional 'from' property
-*/
 
 export function getCandlestickData(symbol, timeline) {
     return new Promise((resolve, reject) => {

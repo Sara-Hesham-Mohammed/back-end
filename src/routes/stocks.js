@@ -1,5 +1,5 @@
 const express = require('express');
-const { fetchStockHistory } = require('../services/stocks');
+const { fetchStockHistory } = require('../services/stocks.js');
 const router = require('express').Router();
 const stocksController = require('../controllers/stocks-controller.js');
 

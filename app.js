@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
         age: 22
     });
 })
+app.use('/api/finnhub', require('./routes/finnhubRoute'));
 
 app.listen(PORT, async () => {
     console.log(`Listening on port ${PORT}`);
