@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 //DB Connnection
 const initiateDBConnection = require("./config/db");
+const authRouter = require('./routes/authroutes');
 
 dotenv.config({
     path: './config/.env'
@@ -23,3 +24,5 @@ app.listen(PORT, async () => {
     //init server first THEN DB
     await initiateDBConnection();
 });
+
+app.use('/auth', authRouter);
