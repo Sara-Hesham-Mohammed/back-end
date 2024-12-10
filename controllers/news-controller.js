@@ -3,10 +3,9 @@ const newsService = require('../services/news-service');
 //gets all news
 module.exports.getAllNews = async (req, res) => {
   try {
-    const news = await newsService.findAllNews();
+    const news = await newsService.getTopHeadlines();
     return res.send({ news });
   } catch (err) {
-    // this denotes a server error, therefore status code should be 500.
     res.status(500);
     return res.send({
       error: err.message
@@ -14,12 +13,32 @@ module.exports.getAllNews = async (req, res) => {
   }
 };
 
-//gets a single news article (maybe change to get article?)
-module.exports.getArticle= async (req, res) => {
-  // notice how we extract the productId from the dynamic route that should be /news/:productId
-  const articleId = req.params.productId;
+//gets news by topic
+module.exports.getTopNewsByTopic = async (req, res) => {
+  const topic = req.params.topic;
   try {
-    const article = await newsService.findProductById(productId);
+    const newsTopic = await newsService.getTopByTopic(topic);
+
+    if (!newsTopic) {
+      return res.status(404).send({
+        error: 'News Topic not found.'
+      });
+    }
+
+    return res.send({ news });
+  } catch (err) {
+    res.status(500);
+    return res.send({
+      error: err.message
+    });
+  }
+};
+
+//gets a single news article 
+module.exports.getArticle= async (req, res) => {
+  const articleId = req.params.articleId;
+  try {
+    const article = await newsService.findArticleById(articleId);
     if (!article) {
       return res.status(404).send({
         error: 'article not found.'
@@ -30,41 +49,6 @@ module.exports.getArticle= async (req, res) => {
     });
   } catch (err) {
     res.status(500).send({
-      error: err.message
-    });
-  }
-};
-
-module.exports.postProduct = async (req, res) => {
-  const productInfo = {
-    name: req.body.name,
-    description: req.body.description,
-    price: req.body.price,
-    imgURL: req.body.imgURL,
-    supplierId: req.body.supplierId
-  };
-  try {
-    const createdProduct = await newsService.addNewProduct(productInfo);
-    return res.status(201).send({
-      msg: 'article created successfully.',
-      productId: createdProduct._id
-    });
-  } catch (err) {
-    return res.status(500).send({
-      error: err.message
-    });
-  }
-};
-
-module.exports.deleteProduct = async (req, res) => {
-  const productId = req.params.productId;
-  try {
-    await newsService.removeProduct(productId);
-    return res.send({
-      msg: 'article deleted successfully.'
-    });
-  } catch (err) {
-    return res.status(500).send({
       error: err.message
     });
   }

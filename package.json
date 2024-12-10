@@ -4,24 +4,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "git:push": "git add . && git commit -m \"Automated commit\" && git push"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "express-validator": "^7.2.0",
     "install": "^0.13.0",
-    "joi": "^17.13.3",
     "mongodb": "^6.11.0",
-    "mongoose": "^8.8.4",
+    "mongoose": "^8.8.3",
     "npm": "^10.9.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "tailwindcss": "^3.4.16"
   }
 }
