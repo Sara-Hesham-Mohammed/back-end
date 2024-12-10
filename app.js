@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', newsRouter);
+app.use('/api/finnhub', require('./routes/finnhubRoute'));
 
 app.listen(PORT, async () => {
     console.log(`Listening on port ${PORT}`);
