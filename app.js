@@ -5,8 +5,6 @@ const cors = require('cors');
 //DB Connnection
 const initiateDBConnection = require("./config/db");
 const authRouter = require('./routes/authroutes');
-
-
 const newsRouter = require('./routes/news');
 
 //this fn loads all the env vars from the .env file
@@ -22,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', newsRouter);
+app.use('/auth', authRouter);
 app.use('/api/finnhub', require('./routes/finnhubRoute'));
 
 app.listen(PORT, async () => {
@@ -30,5 +29,3 @@ app.listen(PORT, async () => {
     await initiateDBConnection();
 });
 
-
-app.use('/auth', authRouter);

@@ -1,8 +1,7 @@
-
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/UserModel');
 
-MediaSourceHandle.exports.createUser = async (userInfo) => {
+module.exports.createUser = async (userInfo) => {
     try {
         let hashedPassword = await bcrypt.hash(userInfo.password, 12);
 
