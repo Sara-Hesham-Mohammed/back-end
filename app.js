@@ -4,6 +4,7 @@ const cors = require('cors');
 
 //DB Connnection
 const initiateDBConnection = require("./config/db");
+const authRouter = require('./routes/authroutes');
 
 
 const newsRouter = require('./routes/news');
@@ -28,3 +29,6 @@ app.listen(PORT, async () => {
     //init server first THEN DB
     await initiateDBConnection();
 });
+
+
+app.use('/auth', authRouter);
