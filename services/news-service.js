@@ -29,7 +29,7 @@ module.exports.getTopByTopic = async (topic) => {
     method: 'GET',
     url: 'https://real-time-news-data.p.rapidapi.com/topic-headlines',
     params: {
-      topic: {topic},
+      topic: topic,
       limit: '500',
       country: 'US',
       lang: 'en'
