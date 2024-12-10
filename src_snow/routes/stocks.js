@@ -54,11 +54,6 @@ router.get('/company-profile', stocksController.stocks.finnhub.company.profile);
 // Company Financials
 router.get('/company-financials', stocksController.stocks.finnhub.company.financials);
 
-// Indicators
-
-// ================
-// NOTE: RSI and EMA are calculating in client charting libary (react stock charts)
-// ================
 
 // export
 module.exports = router;
