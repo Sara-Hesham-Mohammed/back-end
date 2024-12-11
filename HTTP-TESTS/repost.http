@@ -1,0 +1,20 @@
+POST http://localhost:3000/reposts
+Content-Type: application/json
+
+{
+  "author": "603d7f88bcf86cd7994371f0",  // This should be an existing User ID in your database
+  "caption": "Caption Test",  // Optional caption
+  "article": {
+    "title": "Test Article",  // Required: Title of the article
+    "url": "https://example.com/article",  // Required: URL of the article
+    "source": "Example Source"  // Required: Source of the article
+  },
+  "likes": ["603d7f88bcf86cd7994371f0"],  // Optional: Array of User IDs who liked the post
+  "comments": [  // Optional: Array of comments
+    {
+      "commenter": "603d7f88bcf86cd7994371f0",  // User ID of the commenter
+      "text": "This is a comment.",  // The comment text
+      "createdAt": "2024-12-11T10:00:00Z"  // Timestamp (optional, auto-generated if omitted)
+    }
+  ]
+}
