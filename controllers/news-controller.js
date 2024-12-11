@@ -1,4 +1,4 @@
-const newsService = require('../services/news-service');
+const newsService = require("../services/news-service");
 
 //gets all news
 module.exports.getAllNews = async (req, res) => {
@@ -8,7 +8,7 @@ module.exports.getAllNews = async (req, res) => {
   } catch (err) {
     res.status(500);
     return res.send({
-      error: err.message
+      error: err.message,
     });
   }
 };
@@ -21,35 +21,56 @@ module.exports.getTopNewsByTopic = async (req, res) => {
 
     if (!newsTopic) {
       return res.status(404).send({
-        error: 'News Topic not found.'
+        error: "News Topic not found.",
       });
     }
 
-    return res.send({ news });
+    return res.send({ newsTopic });
   } catch (err) {
     res.status(500);
     return res.send({
-      error: err.message
+      error: err.message,
     });
   }
 };
 
-//gets a single news article 
-module.exports.getArticle= async (req, res) => {
+//gets a single news article
+module.exports.getArticle = async (req, res) => {
   const articleId = req.params.articleId;
   try {
     const article = await newsService.findArticleById(articleId);
     if (!article) {
       return res.status(404).send({
-        error: 'article not found.'
+        error: "article not found.",
       });
     }
     return res.send({
-      article: article
+      article: article,
     });
   } catch (err) {
     res.status(500).send({
-      error: err.message
+      error: err.message,
+    });
+  }
+};
+
+//gets a single news article
+module.exports.postArticle = async (req, res) => {
+  try {
+    const articleInfo = {
+      topicID: req.body.topicID, 
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author,
+      photoURL: req.body.photoURL,
+      publishedDateTime: req.body.publishedDateTime,
+      sourceURL: req.body.sourceURL,
+    };
+
+    await newsService.addArticle(articleInfo);
+  } catch (err) {
+    res.status(500).send({
+      error: err.message,
     });
   }
 };

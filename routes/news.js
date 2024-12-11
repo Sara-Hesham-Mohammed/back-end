@@ -8,10 +8,10 @@ newsRouter.get('/top-headlines', newsController.getAllNews);
 
 newsRouter.get('/:topic', newsController.getTopNewsByTopic);
 
-
 //dynamic route /:id
 newsRouter.get('/:articleId', newsController.getArticle);
 
+newsRouter.post('/postArticle',newsController.postArticle);
 
 // export the router instance we created.
 module.exports = newsRouter;

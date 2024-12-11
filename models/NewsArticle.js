@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 
 const NewsSchema = new Schema({
+    topicID:{
+        type: String, 
+        required: true
+    },
     title: { 
         type: String, 
         required: true
@@ -21,8 +25,13 @@ const NewsSchema = new Schema({
         type: Date, 
         required: true,
     },
+
+    sourceURL: { 
+        type: String, 
+        required: true 
+    },
 });
 
 const NewsModel = model('news', NewsSchema);
 
-module.exports = NewsSchema;
+module.exports = NewsModel;
